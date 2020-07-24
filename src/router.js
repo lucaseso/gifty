@@ -1,11 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Presente from './views/Presente.vue';
+import Gift from './views/Gift.vue';
+import GiftAdd from './views/GiftAdd.vue';
+import GiftEdit from './views/GiftEdit.vue';
 
 Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  routes: [{ path: '/', component: Presente }],
+  routes: [
+    { path: '/', component: Gift },
+    { path: '/gift/add', component: GiftAdd },
+    { path: '/gift/:id/edit', component: GiftEdit, props: true },
+  ],
 });
