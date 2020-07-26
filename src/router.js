@@ -10,8 +10,12 @@ Vue.use(Router);
 export default new Router({
   mode: 'history',
   routes: [
-    { path: '/', component: Gift },
+    { path: '/gift', component: Gift },
     { path: '/gift/add', component: GiftAdd },
     { path: '/gift/:id/edit', component: GiftEdit, props: true },
+    {
+      path: '*',
+      redirect: '/gift',
+    },
   ],
 });

@@ -2,6 +2,15 @@
   width: 100%;
 }
 
+.list {
+  width: 100%;
+}
+
 .normalize-link {
   text-decoration: none;
+}
+
+.form-image img {
+  max-width: 200px;
+  max-height: 200px;
 }
