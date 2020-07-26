@@ -1,9 +1,7 @@
 <template>
-  <v-container class="grey lighten-5 pa-10" col-md-4>
-    <v-row>
+  <v-layout justify-center class="grey lighten-5">
+    <v-flex xs12 sm10 md8 offset-xs0>
       <h1 class="headline">Editar Presente {{ gift.name }}</h1>
-    </v-row>
-    <v-row>
       <form class="form" @submit.prevent="submit">
         <v-text-field
           v-model="$v.form.name.$model"
@@ -35,8 +33,8 @@
         </v-row>
         <v-btn block color="primary" type="submit">Salvar</v-btn>
       </form>
-    </v-row>
-  </v-container>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -72,12 +70,8 @@ export default {
         photoBase64: '',
       },
       photoRules: [
-        value =>
-          !value ||
-          value.size < 2000000 ||
-          'O tamanho da foto não pode ser maior que 2 MB!',
-        value =>
-          !value || value.type.indexOf('image/') >= 0 || 'Formato inválido',
+        value => !value || value.size < 2000000 || 'O tamanho da foto não pode ser maior que 2 MB!',
+        value => !value || value.type.indexOf('image/') >= 0 || 'Formato inválido',
       ],
     };
   },
@@ -86,23 +80,21 @@ export default {
     nameErrors() {
       const errors = [];
       if (!this.$v.form.name.$dirty) return errors;
-      if (!this.$v.form.name.required)
-        errors.push('Nome é um campo obrigatório.');
+      if (!this.$v.form.name.required) errors.push('Nome é um campo obrigatório.');
       return errors;
     },
     quantityErrors() {
       const errors = [];
       if (!this.$v.form.quantity.$dirty) return errors;
-      if (!this.$v.form.quantity.required)
-        errors.push('Quantidade é um campo obrigatório.');
-      if (!this.$v.form.quantity.minValue)
-        errors.push('Quantidade deve ser maior que 0');
+      if (!this.$v.form.quantity.required) errors.push('Quantidade é um campo obrigatório.');
+      if (!this.$v.form.quantity.minValue) errors.push('Quantidade deve ser maior que 0');
       return errors;
     },
   },
   mounted() {
     this.gift = this.gifts.find(item => item.id == this.id);
     this.form = { ...this.gift };
+    console.log(this.form);
   },
   beforeRouteLeave(to, from, next) {
     if (

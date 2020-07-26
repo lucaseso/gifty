@@ -1,0 +1,24 @@
+{
+  "person": {
+    "name": "String",
+    "email": "String",
+    "password": "String"
+  },
+  "gift": {
+    "name": "String",
+    "quantity": "Number",
+    "description": "String/text",
+    "photo_url": "String",
+    "photo64": "base64",
+    "id_party": "String"
+  },
+  "party": {
+    "type": "String",
+    "name": "String",
+    "date": "Date",
+    "id_person": "String"
+  },
+  "invited": {
+    "name": "String"
+  }
+}
