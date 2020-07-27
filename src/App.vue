@@ -43,7 +43,7 @@ export default {
       { picture: 78, text: 'MKBHD' },
     ],
   }),
-  mounted() {
+  created() {
     this.initGifts();
   },
   methods: {
