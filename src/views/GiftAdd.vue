@@ -51,7 +51,7 @@ export default {
       },
     },
   },
-  data: function() {
+  data: function () {
     return {
       form: {
         name: '',
@@ -61,8 +61,12 @@ export default {
         photoBase64: '',
       },
       photoRules: [
-        value => !value || value.size < 2000000 || 'O tamanho da foto não pode ser maior que 2 MB!',
-        value => !value || value.type.indexOf('image/') >= 0 || 'Formato inválido',
+        value =>
+          !value ||
+          value.size < 2000000 ||
+          'O tamanho da foto não pode ser maior que 2 MB!',
+        value =>
+          !value || value.type.indexOf('image/') >= 0 || 'Formato inválido',
       ],
     };
   },
@@ -70,14 +74,17 @@ export default {
     nameErrors() {
       const errors = [];
       if (!this.$v.form.name.$dirty) return errors;
-      if (!this.$v.form.name.required) errors.push('Nome é um campo obrigatório.');
+      if (!this.$v.form.name.required)
+        errors.push('Nome é um campo obrigatório.');
       return errors;
     },
     quantityErrors() {
       const errors = [];
       if (!this.$v.form.quantity.$dirty) return errors;
-      if (!this.$v.form.quantity.required) errors.push('Quantidade é um campo obrigatório.');
-      if (!this.$v.form.quantity.minValue) errors.push('Quantidade deve ser maior que 0');
+      if (!this.$v.form.quantity.required)
+        errors.push('Quantidade é um campo obrigatório.');
+      if (!this.$v.form.quantity.minValue)
+        errors.push('Quantidade deve ser maior que 0');
       return errors;
     },
   },
@@ -100,8 +107,6 @@ export default {
       }
     },
     createImage(file) {
-      console.log(file);
-
       var reader = new FileReader();
       var vm = this;
 

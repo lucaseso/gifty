@@ -21,7 +21,7 @@
                   <v-icon color="grey darken-1">mdi-pencil</v-icon>
                 </v-btn>
               </router-link>
-              <v-btn icon title="Deletar" @click="deleteGift(item.id)">
+              <v-btn icon title="Deletar" @click.stop="deleteId = item.id">
                 <v-icon color="red lighten-2">mdi-delete</v-icon>
               </v-btn>
             </v-list-item-action>
@@ -39,6 +39,26 @@
         </v-btn>
       </router-link>
     </v-flex>
+
+    <v-dialog v-model="dialog" max-width="430">
+      <v-card>
+        <v-card-title>Por favor confirme</v-card-title>
+
+        <v-card-text class="subtitle-1">Tem certeza que quer deletar o presente?</v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn color="red darken-1" text @click="deleteId = ''">
+            <slot name="cancel-label">Cancelar</slot>
+          </v-btn>
+
+          <v-btn color="green darken-1" text @click="deleteGift">
+            <slot name="confirm-label">Confirmar</slot>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-layout>
 </template>
 
@@ -47,11 +67,23 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Presente',
+  data() {
+    return {
+      deleteId: '',
+    };
+  },
   computed: {
     ...mapGetters(['gifts']),
+    dialog() {
+      return !!this.deleteId;
+    },
   },
   methods: {
-    ...mapActions(['deleteGift']),
+    ...mapActions({ deleteGiftAction: 'deleteGift' }),
+    deleteGift() {
+      this.deleteGiftAction(this.deleteId);
+      this.deleteId = '';
+    },
   },
 };
 </script>
