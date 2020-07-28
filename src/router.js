@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Gift from './views/Gift.vue';
-import GiftAdd from './views/GiftAdd.vue';
-import GiftEdit from './views/GiftEdit.vue';
+import Gift from './views/gift/containers/Gift.vue';
+import GiftAdd from './views/gift/containers/GiftAdd.vue';
+import GiftEdit from './views/gift/containers/GiftEdit.vue';
 
 Vue.use(Router);
 
